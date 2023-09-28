@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load crispy_forms_filters %}
+
+{% block content %}
+
+{% load crispy_forms_tags %}
+
+<!--Login-->
+
+<div class="container py-5 my-5">
+<br><br>
+    <h1>Connexion</h1>
+  <form  action = "{% url 'login' %}" method="POST">
+    {% csrf_token %}
+    {{ login_form|crispy }}
+    <button class="btn btn-primary" type="submit">Connexion</button>
+  </form>
+    {% if messages %}
+        {% for message in messages %}
+        <p>{{ message }}</p>
+        {% endfor %}
+    {% endif %}
+  <p class="text-center">Vous n'avez pas de compte ? <a href="{% url 'register' %}">Créer un compte</a></p>
+  <p class="text-center"><a href="{% url 'password_reset' %}">Mot de passe oublié ?</a></p>
+
+</div>
+{% endblock %}

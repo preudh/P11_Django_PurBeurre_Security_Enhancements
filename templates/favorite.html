@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+<div class="container my-5" style="padding-top: 50px;">
+  <div class="my-5">
+    <h2>Liste de vos aliments enregistrés</h2>
+  </div>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col" >#</th>
+        <th scope="col">Nom du produit</th>
+        <th scope="col">Supprimer de votre liste</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for fav in favori %}
+      <tr>
+        <th scope="row">{{ forloop.counter }}</th>
+        <td> {{ fav.name }}</td>
+        <td> <a href="{% url 'remove' pk=fav.pk %}" class="btn btn-primary btn-sm">supprimer</a> </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+</div>
+
+{#<div class="pagination">#}
+{#    <span class="step-links">#}
+{#    <!--Here we are checking if the page object has previous page, if so then add links to the first page and previous page.#}
+{#    This line ?page=1 means we are passing data to the server using the GET method, we are passing the value of 1 to the page parameter-->#}
+{#        {% if products.has_previous %}#}
+{#            <a href="?page=1">&laquo; premier</a>#}
+{#            <a href="?page={{ products.previous_page_number }}">précédent</a>#}
+{#        {% endif %}#}
+{#    <!--shows the current page number against total number of pages-->#}
+{#    <span class="current">#}
+{#        Page {{ products.number }} de {{ products.paginator.num_pages }}.#}
+{#    </span>#}
+{#    <!--This line checks if the page object has next page, if so show links for the next page and the last page-->#}
+{#    {% if products.has_next %}#}
+{#        <a href="?page={{ products.next_page_number }}">suivant</a>#}
+{#        <a href="?page={{ products.paginator.num_pages }}">dernier &raquo;</a>#}
+{#    {% endif %}#}
+{#    </span>#}
+{#</div>#}
+
+
+
+{% endblock %}

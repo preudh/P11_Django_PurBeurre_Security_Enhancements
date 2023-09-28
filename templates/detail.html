@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block content%}
+{% load static %}
+<body>
+
+        <div class="text-center" id ="img_search" style="margin-top:100px;margin-bottom:50px;">
+            <div class="header_img">
+                <div class="header_img mx-auto" >
+                   <div id="back_img"  class="img-responsive" style="background-image:url({{p.image_front_url}}">
+                       <h2>
+                           <a id="text_prod" class="text mb-5">
+                           {{p.name}}
+                           </a>
+                       </h2>
+                   </div>
+                </div>
+            </div>
+        </div>
+
+    <div class="container">
+        <div class="row" style="margin: 50px;">
+            <div class="col-md-6 col-xxl-6 offset-md-0 text-start d-flex d-sm-flex justify-content-center justify-content-sm-center my-sm-auto my-md-auto" style="padding: 30px;">
+                {% if p.nutrition_grade == 'a' %}
+                    <img class="img-fluid d-flex" src="{% static 'img/nutriscore/A.png' %}" alt={{p.nutrition_grade}}>
+                {% elif p.nutrition_grade == 'b' %}
+                    <img class="img-fluid d-flex" src="{% static 'img/nutriscore/B.png' %}" alt={{p.nutrition_grade}}>
+                {% elif p.nutrition_grade == 'c' %}
+                    <img class="img-fluid d-flex" src="{% static 'img/nutriscore/C.png' %}" alt={{p.nutrition_grade}}>
+                {% elif p.nutrition_grade == 'd' %}
+                    <img class="img-fluid d-flex" src="{% static 'img/nutriscore/D.png' %}" alt={{p.nutrition_grade}}>
+                {% elif p.nutrition_grade == 'e' %}
+                    <img class="img-fluid d-flex" src="{% static 'img/nutriscore/E.png' %}" alt={{p.nutrition_grade}}>
+                {% endif %}
+            </div>
+
+            <div class="col-md-6 col-xxl-6 text-center" style="text-align: center;">
+                <h1 style="font-size:20px;color:red;margin-bottom: 20px;">Repères nutrionnels pour 100g:</h1>
+                <img class="img-fluid" src="{{p.image_nutrition_small_url}}" alt="Repères nutrionnels pour 100g"></div>
+            </div>
+    </div>
+
+    <div class="container">
+        <div class="row" style="margin: 50px;">
+            <div class="col-md-6 col-xxl-6 mx-sm-auto mx-md-auto" style="text-align: center;">
+                <a href="{{ p.url}}" class="btn btn-primary" type="button" style="font-weight: bold;font-size: 20px;">Voir la fiche Open Food Facts</a>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+{% endblock %}

@@ -1,0 +1,77 @@
+#mainNav
+{
+  border-color:#f8f6f6;
+  background: #c45525;
+}
+
+#fitlogo
+{
+  height: 49px;
+}
+
+#colleteremy
+{
+  background-color: #c45525;
+}
+
+#about
+{
+  background-color: #c45525;
+}
+
+#text_prod
+{
+    line-height: 300px;
+    color: #e45a3d;
+    font-weight: bold;
+    animation: glow 1s ease-in-out infinite alternate;
+}
+
+#back_img
+{
+    image-orientation: initial;
+    height: 100%;
+    /*width: 300px;*/
+    color: #e45a3d;
+    border-style: solid;
+}
+
+.img_search
+{
+    padding-top: 0;
+    *width:100%;
+    height:300px;
+    padding-bottom: 0;
+    }
+
+h1.text-center
+{
+    color:#c45525;
+}
+
+span#count
+{
+ color:#c45525;
+ font-weight: bold;
+ font-size: larger;
+}
+
+h3.card_header
+{
+  position: relative;
+  float: right;
+  width: 60px;
+  height: 60px;
+  background-color: rgba(255,253,112,0.8);
+  border-radius: 50%;
+  margin: 16px;
+  opacity: 0;
+}
+
+/*p.error*/
+/*{*/
+/*   color : red;*/
+/*}*/
+
+
+

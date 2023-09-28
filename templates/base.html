@@ -1,0 +1,102 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+
+    <!-- Bootstrap 5 Autocomplete -->
+{#    <script src="{% static 'js/autocomplete.js' %}"></script>#}
+
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+
+
+    <!--  Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic">
+    <link rel="stylesheet" href="{% static 'fonts/fontawesome-all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'fonts/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'fonts/fontawesome5-overrides.min.css' %}">
+
+    <!--  Cloudflare -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css">
+
+    <title>Pur-Beurre</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="{% static 'img/logo_pur_beurre.png'%}">
+
+</head>
+
+<body id="page-top" data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="57">
+    <!-- Navigation -->
+    <nav class="navbar navbar-light navbar-expand-lg fixed-top" id="mainNav">
+
+        <div class="container">
+            <a class="navbar-brand" href="/">PUR BEURRE
+                <img src="{% static 'img/logo_pur_beurre.png' %}" id="fitlogo" alt="logo pur beurre" title="accueil">
+            </a>
+            <button data-bs-toggle="collapse" data-bs-target="#navbarResponsive" class="navbar-toggler navbar-toggler-right" type="button" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-align-justify"></i></button>
+                <form action="{% url 'search' %}" class="input-group" method="GET">
+                    <input class="form-control" id="myAutocomplete" type="text" name="search" placeholder="produit ou catégorie" required>
+                    <button class="btn btn-danger" type="submit">Chercher</button>
+                </form>
+
+            <div class="collapse navbar-collapse" id="navbarResponsive" >
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        {% if user.is_authenticated %}
+                        <a class="nav-link" href="{% url 'my_account' %}">
+                                <i class="fas fa-user-alt fa-2x" title="mon compte"></i>
+                        </a>
+                        {% else %}
+                        <a class="nav-link" href="{% url 'login' %}">
+                                <i class="fas fa-user-alt fa-2x" title="login"></i>
+                        </a>
+                        {% endif %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'favorite' %}">
+                                <i class="fas fa-carrot fa-2x" title="mes favoris"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'logout' %}">
+                                <i class="fas fa-sign-out-alt fa-2x" title="logout"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+{% block content %}
+{% endblock %}
+
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 mx-auto text-center">
+            <a id="termes" href="{% url 'termes' %}">Mentions légales</a>
+            <a id="contact" href="{% url 'index' %}#contact">Contact</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+
+     <!-- Option: Bootstrap JS -->
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
+
+    <!--Custom JS-->
+    <script src="{% static 'js/script.js' %}"></script>
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+    .page-section {
+        padding: 5% 0;
+    }
+
+    .mentionlegal p {
+        font-size: 1rem;
+    }
+
+    .mentionlegal p:first-child {
+        margin-top: 30%; /* Ajustez cette valeur selon vos besoins */
+    }
+</style>
+
+<section class="page-section">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 mx-auto text-center">
+                <div class="mentionlegal">
+                    <p>Ce site internet est non professionnel et est utilisé dans le cadre du projet 8 de la formation de Developpeur d'Application Python Openclassrooms.</p>
+                    <p>Le traitement des données est destiné uniquement à des fins pédagogiques.</p>
+                    <p>Les emails, mot de passe et nom d'utilisateur à renseigner doivent être fictifs et uniques à ce site.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

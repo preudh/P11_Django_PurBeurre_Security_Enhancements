@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+  {% load static %}
+ <header class="text-center text-white d-flex masthead" style="background-image:url({% static '/img/header.jpg'%});padding-top: 200px;margin-bottom:30px;">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 addmargintop text-center">
+            <p>Vous êtes connecté en tant que:</p>
+            <p>{{user.username}}</p>
+         <hr class="divider my-4">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 addmargintop text-center">
+            <p>Votre adresse mail est:</p>
+            <p>{{user.email}}</p>
+        </div>
+      </div>
+    </div>
+   </header>
+{% endblock %}

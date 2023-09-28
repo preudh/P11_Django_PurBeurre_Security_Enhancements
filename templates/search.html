@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% block content%}
+{% load static %}
+<body>
+        <div class="text-center" id ="img_search" style="padding-top: 100px;padding-bottom: 30px">
+            <div class="header_img">
+                <div class="header_img mx-auto" >
+                   <div id="back_img"  class="img-responsive" style="background-image:url({{p.image_front_url}}">
+                       <h2>
+                           <a id="text_prod" class="text mb-5">
+                           {{p.name}}
+                           </a>
+                       </h2>
+                   </div>
+                </div>
+            </div>
+        </div>
+
+    <div class="container-fluid">
+        <div class="row">
+                <div style="text-align:center; color:red;">
+                    <h3>Vous pouvez remplacer cet aliment par: </h3>
+                </div>
+                <br>
+                <br>
+                <br>
+                {% if products %}
+                    {% for product in products %}
+                        <div class="col-md-4"> <!--3 col of 4 = 12 for md medium devices equal or greater than 768px tablets and more -->
+                            <figure class="card card-product-grid" style="text-align: center">
+                                <div class="img-wrap">
+                                    <div class="card_header" style="background-color:#f05f40;position:relative; float: right;font-size: 16px; border-radius:30%;margin-top:-10px;margin-right:-5px;color:white;">
+                                        <div>{{ product.nutrition_grade|upper}}</div>
+                                    </div>
+                                        <a href="{{ product.url }}"><img src="{{ product.image_front_url }}" alt="{{ product.image_front_url }}" style="width:100%; height:300px;padding:10px; margin-top: 10px"></a>
+                                    </div> <!-- img-wrap.// -->
+                                <figcaption class="info-wrap">
+                                    <div class="fix-height">
+                                        <a href="{% url 'detail' product_id=product.id %}" class="title text-center">{{ product.name }}</a>
+                                    </div>
+                                      <form action="{% url 'save' product_id=product.id %}" method="POST">
+                                          {% csrf_token %}
+                                           <button class="btn-primary my-2 my-sm-0" name="product_id=product_id=" type="submit" value="submit"><i class="fas fa-cart-arrow-down">&nbsp Sauvegarder</i></button>
+                                      </form>
+                                </figcaption>
+                            </figure>
+                        </div> <!-- col.// -->
+                    {% endfor %}
+                {% else %}
+                    <div style="text-align: center;color:red">
+                        <span>Désolé, ce produit ne figure dans notre catalogue:</span>
+                        <br><br>
+                        <span>{% for category in list_categories %}</span>
+                              <ul style="list-style-type:none;">
+                                  <li> {{forloopcounter}}.{{category}}</li>
+                               </ul>
+                              {% endfor %}
+                    </div>
+                {% endif %}
+            </div> <!-- row end.// -->
+            <br>
+            {% if paginate %}
+              <div class="clearfix"></div>
+              <nav aria-label="...">
+                <ul class="pager">
+                    <!--Here we are checking if the page object has previous page, if so then add links to the previous page.
+                    I pass the request to the model and access all GET variables via request.GET. Then I loop through the GET dictionary and as long as the variable is not the page, I print it.-->
+                  {% if products.has_previous %}
+                      <a href="?page={{ products.previous_page_number }}{% for key, value in request.GET.items %}{% if key != 'page' %}&{{ key }}={{ value }}{% endif %}{% endfor %}">Précédent</a>
+                  {% endif %}
+                    <!--shows the current page number against total number of pages-->
+                    <span class="current">
+                        Page {{ products.number }} de {{ products.paginator.num_pages }}.
+                    </span>
+                   <!--This line checks if the page object has next page, if so show links for the next page and the last page-->
+                   {% if products.has_next %}
+                      <a href="?page={{ products.next_page_number }}{% for key, value in request.GET.items %}{% if key != 'page' %}&{{ key }}={{ value }}{% endif %}{% endfor %}" id='next'>Suivant</a>
+                  {% endif %}
+                </ul>
+              </nav>
+            {% endif %}
+
+            </div>
+<br>
+{% endblock %}
